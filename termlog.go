@@ -1,38 +1,6 @@
-// Package termlog provides facilities for logging to a terminal geared towards
-// interactive use. Basic usage looks like this:
-//
-//   l := termlog.NewLog()
-//   l.Say("Log")
-//   l.Notice("Notice!")
-//   l.Warn("Warn!")
-//   l.Shout("Error!")
-//
-//  Each log entry gets a timestamp. Entries can be grouped together under one
-//  timestamp, with subsequent lines indented like so:
-//
-// 	g = l.Group()
-//  g.Say("This line gets a timestamp")
-//  g.Say("This line will be indented with no timestamp")
-//  g.Done()
-//
-// Groups must be marked as .Done() before output is produced - a good use for
-// defer.
-//
-// The package is compatible with the color specifications from
-// github.com/fatih/color, which means that colors can be composed like this:
-//
-// 	g = l.Group()
-// 	g.Say("Here are some composed colours...")
-// 	g.Say(
-// 		"%s %s %s",
-// 		color.RedString("red"),
-// 		color.GreenString("green"),
-// 		color.BlueString("blue"),
-// 	)
-//
-// The *As logging functions tag a line with an identity. All tagged lines are
-// silenced unless explicitly enabled on the Logger with the .Enable() method.
-package termlog
+// Package terminallogging provides facilities for logging to a terminal geared towards
+// interactive use.
+package terminallogging
 
 import (
 	"io"
@@ -87,7 +55,26 @@ type Logger interface {
 
 	Done()
 	Quiet()
-	Group() Logger
+}
+
+// Stream is a stream of log entries with a header
+type Stream interface {
+	Logger
+	Quiet()
+	Header()
+}
+
+// terminallogging is the top-level terminallogging interface
+type terminallogging interface {
+	Logger
+	Group() Group
+	Stream(header string) Stream
+	Quiet()
+}
+
+type linesource interface {
+	getID() string
+	getHeader() string
 }
 
 type line struct {
@@ -300,7 +287,7 @@ func FromContext(ctx context.Context) Logger {
 	return logger
 }
 
-// SetOutput sets the output writer for termlog (stdout by default).
+// SetOutput sets the output writer for terminallogging (stdout by default).
 func SetOutput(w io.Writer) {
 	color.Output = w
 }

@@ -5,7 +5,7 @@
 
 # Basic usage
 
-    l := termlog.NewLog()
+    l := terminallogging.NewLog()
     l.Say("Log")
     l.Notice("Notice!")
     l.Warn("Warn!")
@@ -44,7 +44,7 @@ produced output in the meantime. Each stream log entry gets its own timestamp.
 
 Log entries can be named using the *As methods:
 
-    l := termlog.NewLog()
+    l := terminallogging.NewLog()
     l.Say("hello")
     l.SayAs("debug", "Some debugging info")
 

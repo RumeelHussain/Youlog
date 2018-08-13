@@ -1,4 +1,4 @@
-package termlog
+package terminallogging
 
 import (
 	"bytes"

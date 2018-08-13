@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/cortesi/termlog"
+	"github.com/rumeel/terminallogging"
 	"github.com/fatih/color"
 )
 
-func testpatt(l termlog.Logger) {
+func testpatt(l terminallogging.Logger) {
 	l.Say("Log")
 	l.Notice("Notice!")
 	l.Warn("Warn!")
@@ -13,7 +13,7 @@ func testpatt(l termlog.Logger) {
 }
 
 func main() {
-	l := termlog.NewLog()
+	l := terminallogging.NewLog()
 	testpatt(l)
 
 	g := l.Group()

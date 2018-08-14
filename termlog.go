@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 // Package terminallogging provides facilities for logging to a terminal geared towards
 // interactive use.
 package terminallogging
+=======
+// Package termlog provides facilities for logging to a terminal geared towards
+// interactive use.
+package termlog
+>>>>>>> 3aae1f8... Remove examples from termlog.go, extend README
 
 import (
 	"io"

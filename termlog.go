@@ -19,7 +19,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-const defaultTimeFmt = "15:04:05"
+const defaultTimeFmt = "15:04:05: "
 const indent = "  "
 
 // Palette defines the colour of output
@@ -147,7 +147,6 @@ func (l *Log) output(quiet bool, lines ...*line) {
 			l.Palette.Timestamp.Printf(
 				"%s", time.Now().Format(l.TimeFmt),
 			)
-			l.Palette.Say.Print(": ")
 			first = false
 			format = line.format + "\n"
 		} else {

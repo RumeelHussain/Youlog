@@ -16,7 +16,7 @@ Each log entry gets a timestamp.
 
 # Groups
 
-Entries can be grouped together under one timestamp, with subsequent lines
+Groups collect entries together under a single timestamp, with subsequent lines
 indented:
 
     g = l.Group()
@@ -25,7 +25,23 @@ indented:
     g.Done()
 
 Groups produce no output until the .Done() method is called - a good use for
+<<<<<<< HEAD
 defer. terminallogging ensures that all grouped entries appear together in output.
+=======
+defer. Termlog ensures that all grouped entries appear together in output.
+>>>>>>> dabee0d... Add Streams
+
+
+# Streams
+
+Streams associate log entries with a header. New stream log entries only get a
+header if another log source (i.e. a different stream, group, or plain log) has
+produced output in the meantime. Each stream log entry gets its own timestamp.
+
+    g = l.Stream("This is the header")
+    g.Say("The header will be printed before this line")
+    g.Say("But not before this one")
+    g.Done()
 
 
 # Streams

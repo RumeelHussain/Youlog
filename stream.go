@@ -70,6 +70,7 @@ func (s *stream) Quiet() {
 
 // Header immedately outputs the stream header
 func (s *stream) Header() {
+<<<<<<< HEAD
 	outputMutex.Lock()
 	defer outputMutex.Unlock()
 	s.log.header(s)
@@ -79,6 +80,13 @@ func (s *stream) EnableTimestamps() {
 	s.timestamps = true
 }
 
+=======
+	s.log.mu.Lock()
+	defer s.log.mu.Unlock()
+	s.log.header(s)
+}
+
+>>>>>>> b0f652b... Stream.Header to immediate output the stream header
 func (s *stream) getID() string {
 	if s.id == "" {
 		s.id = rndstr(16)

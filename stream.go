@@ -68,6 +68,7 @@ func (s *stream) Quiet() {
 	s.quiet = true
 }
 
+<<<<<<< HEAD
 // Header immedately outputs the stream header
 func (s *stream) Header() {
 <<<<<<< HEAD
@@ -76,10 +77,15 @@ func (s *stream) Header() {
 	s.log.header(s)
 }
 
+=======
+// EnableTimestamps enables timestamps for sub-entries. By default, they are on
+// only for headings.
+>>>>>>> f98f495... Timestamps are off by default for sub-entries in streamed logs
 func (s *stream) EnableTimestamps() {
 	s.timestamps = true
 }
 
+<<<<<<< HEAD
 =======
 	s.log.mu.Lock()
 	defer s.log.mu.Unlock()
@@ -87,6 +93,8 @@ func (s *stream) EnableTimestamps() {
 }
 
 >>>>>>> b0f652b... Stream.Header to immediate output the stream header
+=======
+>>>>>>> f98f495... Timestamps are off by default for sub-entries in streamed logs
 func (s *stream) getID() string {
 	if s.id == "" {
 		s.id = rndstr(16)

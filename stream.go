@@ -72,6 +72,9 @@ func (s *stream) Quiet() {
 // Header immedately outputs the stream header
 func (s *stream) Header() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 51fcc62... LogTest - convenient access to logs from test suites
 	outputMutex.Lock()
 	defer outputMutex.Unlock()
 	s.log.header(s)

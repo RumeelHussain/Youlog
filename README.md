@@ -1,13 +1,5 @@
 
-<<<<<<< HEAD
 # YouLog: A Logging library for interactive terminals built on Golang
-=======
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/cortesi/termlog)
-[![Travis Build Status](https://travis-ci.org/cortesi/termlog.svg?branch=master)](https://travis-ci.org/cortesi/termlog)
-[![Build status](https://ci.appveyor.com/api/projects/status/gxuitoksv66sky3l/branch/master?svg=true)](https://ci.appveyor.com/project/cortesi/termlog/branch/master)
-
-
->>>>>>> 898fe0d... Build badges
 
 ![screenshot](_demo/screenshot.png "terminallogging in action")
 
@@ -33,11 +25,7 @@ indented:
     g.Done()
 
 Groups produce no output until the .Done() method is called - a good use for
-<<<<<<< HEAD
 defer. terminallogging ensures that all grouped entries appear together in output.
-=======
-defer. Termlog ensures that all grouped entries appear together in output.
->>>>>>> dabee0d... Add Streams
 
 
 # Streams

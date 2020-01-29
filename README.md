@@ -1,10 +1,7 @@
 
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/cortesi/termlog)
-[![Build Status](https://drone.io/github.com/cortesi/termlog/status.png)](https://drone.io/github.com/cortesi/termlog/latest)
+# YouLog: A Logging library for interactive terminals built on Golang
 
-# termlog: Logging for interactive terminals
-
-![screenshot](_demo/screenshot.png "termlog in action")
+![screenshot](_demo/screenshot.png "terminallogging in action")
 
 # Basic usage
 
@@ -27,8 +24,20 @@ indented:
     g.Say("This line will be indented with no timestamp")
     g.Done()
 
-Groups must be marked as .Done() before output is produced - a good use for
-defer. Termlog ensures that all grouped entries appear together in output.
+Groups produce no output until the .Done() method is called - a good use for
+defer. terminallogging ensures that all grouped entries appear together in output.
+
+
+# Streams
+
+Streams associate log entries with a header. New stream log entries only get a
+header if another log source (i.e. a different stream, group, or plain log) has
+produced output in the meantime. Each stream log entry gets its own timestamp.
+
+    g = l.Stream("This is the header")
+    g.Say("The header will be printed before this line")
+    g.Say("But not before this one")
+    g.Done()
 
 
 # Named logs
